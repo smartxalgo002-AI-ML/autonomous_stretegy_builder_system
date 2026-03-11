@@ -1,0 +1,104 @@
+# ============================================================
+# Autonomous AI Trading System Configuration
+# ============================================================
+
+api_keys:
+  ollama: "28c755b25af34be483fd00bbe6481cb0.CtWafq08MtOCQ37ZRgtDHceA"
+  anthropic: "YOUR_ANTHROPIC_API_KEY"
+  tavily: "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"
+  dhan:
+    client_id: "YOUR_DHAN_CLIENT_ID"
+    access_token: "YOUR_DHAN_ACCESS_TOKEN"
+
+# LLM Configuration
+llm:
+  base_url: "http://localhost:11434"        # Targeted SiliconFlow Endpoint
+  coder_model: "deepseek-v3.1:671b-cloud"          # Elite quantitative model
+  temperature: 0.7
+  max_tokens: 8192
+  inventor_temperature: 0.7
+  validator_temperature: 0.1
+  evaluator_temperature: 0.2
+
+# Backtest Parameters
+backtest:
+  default_capital: 1000000        # 10 Lakhs (Realistic for selling)
+  commission_per_order: 20       # INR flat fee
+  slippage_pct: 0.05             # 0.05% slippage
+  intraday_start: "09:15"
+  intraday_end: "15:30"
+  swing_lookback_days: 120
+  intraday_lookback_days: 60
+  options_lot_size: 50           # Default NIFTY
+  max_concurrent_backtests: 4
+  walk_forward:
+    enabled: true
+    windows: 3
+    train_days: 40
+    val_days: 20
+
+# Performance Thresholds (Elite survival criteria)
+performance:
+  min_win_rate: 0.40             
+  min_profit_factor: 1.4
+  min_net_return_pct: 10.0       # Higher bar for options
+  max_drawdown_pct: 12.0         # Tighter risk control
+  min_trade_sample: 20
+  min_sharpe_ratio: 1.2
+  min_expectancy: 0.5
+  max_consecutive_losses: 6
+
+# Strategy Generation
+strategy:
+  max_strategies_per_cycle: 5
+  diversity_penalty: 0.5        # Penalize if too similar
+  max_indicator_count: 5
+  supported_timeframes:
+    - "1min"
+    - "5min"
+    - "15min"
+    - "1day"
+  supported_instruments:
+    - "NIFTY"
+    - "BANKNIFTY"
+    - "FINNIFTY"
+
+# Concurrency Settings
+concurrency:
+  max_async_workers: 8
+  max_process_workers: 4
+  agent_timeout_seconds: 180
+
+# Database Configuration
+database:
+  url: "sqlite:///trading_system.db"
+  echo: false
+  pool_size: 10
+  max_overflow: 20
+
+# Vector Memory (for mistake tracking)
+memory:
+  embedding_model: "text-embedding-3-small"
+  similarity_threshold: 0.85
+  max_mistakes_stored: 1000
+  mistake_db_path: "./memory/mistakes.json"
+  strategy_history_path: "./memory/strategy_history.json"
+
+# Logging
+logging:
+  level: "INFO"
+  log_dir: "./logs"
+  max_bytes: 10485760            # 10MB
+  backup_count: 5
+  format: "%(asctime)s | %(name)s | %(levelname)s | %(message)s"
+
+# Evolution Loop
+evolution:
+  max_iterations: -1             # -1 = infinite loop
+  sleep_between_cycles_sec: 10
+  top_strategies_to_keep: 20
+  evolution_tournament_size: 3
+
+
+
+

@@ -1,0 +1,48 @@
+# ================================================================
+# Autonomous AI Trading System — Python Dependencies
+# ================================================================
+# Core Python: 3.11+
+
+# ── AI / LLM ────────────────────────────────────────────────────
+anthropic>=0.34.0
+langchain>=0.3.0
+langchain-anthropic>=0.2.0
+langchain-community>=0.3.0
+langgraph>=0.2.0
+
+# ── Data & Numerics ──────────────────────────────────────────────
+numpy>=1.26.0
+pandas>=2.1.0
+
+# ── Database (SQLAlchemy + SQLite default) ────────────────────────
+sqlalchemy>=2.0.0
+
+# ── Configuration ────────────────────────────────────────────────
+pyyaml>=6.0.1
+python-dotenv>=1.0.0
+
+# ── Validation ──────────────────────────────────────────────────
+pydantic>=2.6.0
+
+# ── HTTP / Networking ────────────────────────────────────────────
+requests>=2.31.0
+httpx>=0.27.0
+
+# ── Search ──────────────────────────────────────────────────────
+tavily-python>=0.3.0   # optional — falls back to stub without API key
+
+# ── Async / Concurrency ──────────────────────────────────────────
+asyncio-throttle>=1.0.2
+
+# ── Logging / Observability ──────────────────────────────────────
+# (built-in logging used — no extra deps needed)
+
+# ── Optional: Postgres backend ───────────────────────────────────
+# psycopg2-binary>=2.9.9   # uncomment if using PostgreSQL
+
+# ── Optional: Redis queue ────────────────────────────────────────
+# redis>=5.0.0
+
+# ── Optional: Advanced TA library ───────────────────────────────
+# ta-lib  # requires C build tools; system must have TA-Lib installed
+
