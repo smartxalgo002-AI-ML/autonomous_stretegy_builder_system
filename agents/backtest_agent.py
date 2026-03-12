@@ -48,12 +48,12 @@ class BacktestAgent:
             # Persist to DB
             self._bt_repo.save_result({
                 **metrics,
-                "strategy_id" : strategy.id,
-                "start_date"  : result.get("start_date"),
-                "end_date"    : result.get("end_date"),
-                "trade_log"   : result.get("trade_log", []),
-                "equity_curve": result.get("equity_curve", []),
-                "passed"      : False,  # will be set by evaluator
+                "strategy_id"   : strategy.id,
+                "start_date"    : result.get("start_date"),
+                "end_date"      : result.get("end_date"),
+                "trade_log"     : result.get("trade_log", []),
+                "equity_curve"  : result.get("equity_curve", []),
+                "passed"        : False,  # will be set by evaluator
             })
 
             self._log.info(
